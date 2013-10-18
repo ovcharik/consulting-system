@@ -14,8 +14,31 @@ namespace Database.Repositories
         {
             using (var session = Helper.OpenSession())
             {
-                var query = (from user in session.Query<User>() where user.Id == id select user).Single();
-                return query;
+                try
+                {
+                    var query = (from user in session.Query<User>() where user.Id == id select user).Single();
+                    return query;
+                }
+                catch
+                {
+                    return null;
+                }
+            }
+        }
+
+        public static User GetByUsername(string username)
+        {
+            using (var session = Helper.OpenSession())
+            {
+                try
+                {
+                    var query = (from user in session.Query<User>() where user.Username == username select user).Single();
+                    return query;
+                }
+                catch
+                {
+                    return null;
+                }
             }
         }
     }

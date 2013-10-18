@@ -13,6 +13,14 @@ namespace Database.Repositories
             {
                 return false;
             }
+            obj.BeforeValidate();
+            if (!obj.isValid)
+            {
+                return false;
+            }
+            obj.AfterValidate();
+            obj.BeforeCreate();
+            obj.BeforeSave();
             using (ISession session = Helper.OpenSession())
             {
                 using (ITransaction transaction = session.BeginTransaction())
@@ -21,6 +29,8 @@ namespace Database.Repositories
                     transaction.Commit();
                 }
             }
+            obj.AfterSave();
+            obj.AfterCreate();
             return true;
         }
 
@@ -30,6 +40,13 @@ namespace Database.Repositories
             {
                 return false;
             }
+            obj.BeforeValidate();
+            if (!obj.isValid)
+            {
+                return false;
+            }
+            obj.AfterValidate();
+            obj.BeforeSave();
             using (ISession session = Helper.OpenSession())
             {
                 using (ITransaction transaction = session.BeginTransaction())
@@ -38,6 +55,7 @@ namespace Database.Repositories
                     transaction.Commit();
                 }
             }
+            obj.AfterSave();
             return true;
         }
 
@@ -47,6 +65,7 @@ namespace Database.Repositories
             {
                 return false;
             }
+            obj.BeforeDelete();
             using (ISession session = Helper.OpenSession())
             {
                 using (ITransaction transaction = session.BeginTransaction())

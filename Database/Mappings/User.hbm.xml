@@ -7,5 +7,6 @@
     </id>
     <property name="Username" column="username" />
     <property name="Password" column="password" />
+    <property name="Role" column="role" />
   </class>
 </hibernate-mapping>

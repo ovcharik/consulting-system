@@ -36,8 +36,8 @@ namespace Database
             var conf = new Configuration();
             conf.Configure();
             conf.AddAssembly(typeof(User).Assembly);
-            var schema = new SchemaExport(conf);
-            schema.Create(false, true);
+            var schema = new SchemaUpdate(conf);
+            schema.Execute(false, true);
         }
 
         public static bool isExist
