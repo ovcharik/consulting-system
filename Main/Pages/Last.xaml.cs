@@ -18,6 +18,7 @@ namespace Main.Pages
 {
     public partial class Last : Page
     {
+        public Random abstract_logic = new Random();
         public ObservableCollection<Answer> AnswersList = new ObservableCollection<Answer>();
         public ObservableCollection<Result> ResultsList = new ObservableCollection<Result>();
 
@@ -26,6 +27,18 @@ namespace Main.Pages
             InitializeComponent();
             AnswersListBox.ItemsSource = AnswersList;
             ResultsListBox.ItemsSource = ResultsList;
+        }
+
+        private int ComplexFunctionToDetermineTheNumberOfResults(ObservableCollection<Result> rs)
+        {
+            int a = 0;
+            for (int i = 0; i < rs.Count; i++)
+            {
+                a += rs[i].Value;
+            }
+            double d = a / Math.PI;
+            d = Math.Cos(d) * Math.Sin(a) * (Math.Cos(Math.PI) + 1);
+            return abstract_logic.Next((int)d + 3) + 3;
         }
 
         public void SetAnswers(Answers ans)
@@ -74,7 +87,7 @@ namespace Main.Pages
                     return 0;
             });
 
-            int q = (new Random()).Next(3) + 3;
+            int q = ComplexFunctionToDetermineTheNumberOfResults(ResultsList);
             for (int i = 0; i < q; i++)
                 ResultsList.Add(results[i]);
         }
