@@ -1,0 +1,14 @@
+﻿<Page x:Class="Main.Pages.First"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+	Title="First">
+
+    <Grid>
+        <TextBlock Margin="10,10,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="132" IsEnabled="False" FontSize="18"><Run Language="ru-ru" Text="Приветсвуем. Эта консалтинговая система поможет Вам с выбором системы учета документов."/></TextBlock>
+
+    </Grid>
+</Page>
